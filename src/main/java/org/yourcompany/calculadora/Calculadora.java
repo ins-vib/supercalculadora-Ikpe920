@@ -1,12 +1,11 @@
-
-
 package org.yourcompany.calculadora;
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
  * @author Posa el teu nom
  */
-
 
 public class Calculadora {
 
@@ -18,28 +17,18 @@ public class Calculadora {
         System.out.println("Nombre de dígits de -101010: " + nombreDigits(-101010));
         System.out.println("Nombre de dígits de 0: " + nombreDigits(0));
 
-        // Exemples de crida per al mètode sumaPrimersNumeros
-        // System.out.println("Suma dels primers 5 números: " + sumaPrimersNumeros(5));
-        // System.out.println("Suma dels primers 10 números: " + sumaPrimersNumeros(10));
-        // System.out.println("Suma dels primers 15 números: " + sumaPrimersNumeros(15));
+        // --- Llançament de moneda ---
+        Scanner entrada = new Scanner(System.in);
+        System.out.print("\nIntrodueix el nombre de llançaments: ");
+        int numLlançaments = entrada.nextInt();
 
-        // Exemples de crida per al mètode calcularFactorial
-        // System.out.println("Factorial de 5: " + calcularFactorial(5));
-        // System.out.println("Factorial de 7: " + calcularFactorial(7));
-        // System.out.println("Factorial de 10: " + calcularFactorial(10));
+        int[] resultats = simular(numLlançaments);
 
-        // Exemples de crida per al mètode sumaQuadrats
-        // System.out.println("Suma dels quadrats dels primers 3 números: " + sumaQuadrats(3));
-        // System.out.println("Suma dels quadrats dels primers 5 números: " + sumaQuadrats(5));
-        // System.out.println("Suma dels quadrats dels primers 7 números: " + sumaQuadrats(7));
+        System.out.println("\nResultat després de " + numLlançaments + " llançaments:");
+        System.out.println("Cares: " + resultats[0]);
+        System.out.println("Creus: " + resultats[1]);
 
-        // Exemples de crida per al mètode calcularPotencia
-        // System.out.println("2 elevat a la potència 3: " + calcularPotencia(2, 3));
-        // System.out.println("5 elevat a la potència 4: " + calcularPotencia(5, 4));
-        // System.out.println("3 elevat a la potència 5: " + calcularPotencia(3, 5));
-
-       
-        
+        entrada.close();
     }
 
     /**
@@ -54,6 +43,10 @@ public class Calculadora {
         if (nombre == 0) {
             return 1; // el 0 té un dígit
         }        
+
+        // Passem a positiu si és negatiu
+        nombre = Math.abs(nombre);
+
         int comptador = 0;
         while (nombre != 0) {
             nombre /= 10;
@@ -62,5 +55,25 @@ public class Calculadora {
         return comptador;
     }
 
+    /**
+     * Simula el llançament d'una moneda el nombre de vegades indicat.
+     * @param numLlançaments Nombre de llançaments
+     * @return Array amb dos valors: [nombre de cares, nombre de creus]
+     */
+    public static int[] simular(int numLlançaments) {
+        Random random = new Random();
+        int cares = 0;
+        int creus = 0;
 
+        for (int i = 0; i < numLlançaments; i++) {
+            int resultat = random.nextInt(2); // 0 = cara, 1 = creu
+            if (resultat == 0) {
+                cares++;
+            } else {
+                creus++;
+            }
+        }
+
+        return new int[]{cares, creus};
+    }
 }
