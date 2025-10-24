@@ -58,11 +58,10 @@ public class Calculadora {
         return new int[]{cares, creus};
     }
 
-    public static double preuCinema(double preuBase, boolean capSetmana, boolean carnetJove) {
-        double preuFinal = preuBase;
-        if (capSetmana) preuFinal *= 1.10;
-        if (carnetJove) preuFinal *= 0.85;
-        return preuFinal;
+    public static double preuCinema(double preu, boolean capSetmana, boolean carnetJove) {
+        if (capSetmana) preu *= 1.10;
+        if (carnetJove) preu *= 0.85;
+        return preu;
     }
 }
 
