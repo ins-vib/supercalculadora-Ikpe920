@@ -5,51 +5,47 @@ import java.util.Scanner;
 public class Calculadora {
 
     public static void main(String[] args) {
-        Scanner entrada = new Scanner(System.in);
-        int opcio;
-
-        do {
-            mostrarMenuConsola();
-            System.out.print("Selecciona una opció: ");
-            opcio = entrada.nextInt();
-
-            switch (opcio) {
-                case 1:
-                    System.out.print("Introdueix un nombre per sumar els primers n números: ");
-                    int nSuma = entrada.nextInt();
-                    System.out.println("La suma dels primers " + nSuma + " números és: " + sumaPrimersNumeros(nSuma));
-                    break;
-                case 2:
-                    System.out.print("Introdueix un nombre per calcular el factorial: ");
-                    int nFactorial = entrada.nextInt();
-                    System.out.println("El factorial de " + nFactorial + " és: " + calcularFactorial(nFactorial));
-                    break;
-                case 3:
-                    System.out.print("Introdueix un nombre per sumar els quadrats dels primers n números: ");
-                    int nQuadrats = entrada.nextInt();
-                    System.out.println("La suma dels quadrats dels primers " + nQuadrats + " números és: " + sumaQuadrats(nQuadrats));
-                    break;
-                case 4:
-                    System.out.print("Introdueix la base per calcular la potència: ");
-                    int base = entrada.nextInt();
-                    System.out.print("Introdueix l'exponent per calcular la potència: ");
-                    int exponent = entrada.nextInt();
-                    System.out.println(base + " elevat a la potència " + exponent + " és: " + calcularPotencia(base, exponent));
-                    break;
-                case 5:
-                    System.out.print("Introdueix un nombre per calcular el nombre de dígits: ");
-                    int nombre = entrada.nextInt();
-                    System.out.println("El nombre de dígits de " + nombre + " és: " + nombreDigits(nombre));
-                    break;
-                case 6:
-                    System.out.println("Sortint del programa...");
-                    break;
-                default:
-                    System.out.println("Opció no vàlida. Intenta-ho de nou.");
-            }
-        } while (opcio != 6);
-
-        entrada.close();
+        try (Scanner entrada = new Scanner(System.in)) {
+            int opcio;
+            
+            do {
+                mostrarMenuConsola();
+                System.out.print("Selecciona una opció: ");
+                opcio = entrada.nextInt();
+                
+                switch (opcio) {
+                    case 1 -> {
+                        System.out.print("Introdueix un nombre per sumar els primers n números: ");
+                        int nSuma = entrada.nextInt();
+                        System.out.println("La suma dels primers " + nSuma + " números és: " + sumaPrimersNumeros(nSuma));
+                    }
+                    case 2 -> {
+                        System.out.print("Introdueix un nombre per calcular el factorial: ");
+                        int nFactorial = entrada.nextInt();
+                        System.out.println("El factorial de " + nFactorial + " és: " + calcularFactorial(nFactorial));
+                    }
+                    case 3 -> {
+                        System.out.print("Introdueix un nombre per sumar els quadrats dels primers n números: ");
+                        int nQuadrats = entrada.nextInt();
+                        System.out.println("La suma dels quadrats dels primers " + nQuadrats + " números és: " + sumaQuadrats(nQuadrats));
+                    }
+                    case 4 -> {
+                        System.out.print("Introdueix la base per calcular la potència: ");
+                        int base = entrada.nextInt();
+                        System.out.print("Introdueix l'exponent per calcular la potència: ");
+                        int exponent = entrada.nextInt();
+                        System.out.println(base + " elevat a la potència " + exponent + " és: " + calcularPotencia(base, exponent));
+                    }
+                    case 5 -> {
+                        System.out.print("Introdueix un nombre per calcular el nombre de dígits: ");
+                        int nombre = entrada.nextInt();
+                        System.out.println("El nombre de dígits de " + nombre + " és: " + nombreDigits(nombre));
+                    }
+                    case 6 -> System.out.println("Sortint del programa...");
+                    default -> System.out.println("Opció no vàlida. Intenta-ho de nou.");
+                }
+            } while (opcio != 6);
+        }
     }
 
     // Mostra el menú d'operacions
