@@ -48,7 +48,9 @@ public class Calculadora {
         }
     }
 
-    // Mostra el menú d'operacions
+    /** 
+    * Mostra el menú d'operacions
+    */
     public static void mostrarMenuConsola() {
         System.out.println("\nMenú de SuperCalculadora:");
         System.out.println("1- Suma dels primers n números");
@@ -59,7 +61,9 @@ public class Calculadora {
         System.out.println("6- Sortir");
     }
 
-    // Suma dels primers n números
+    /** 
+    * Suma dels primers n números
+    */
     public static int sumaPrimersNumeros(int n) {
         int suma = 0;
         for (int i = 1; i <= n; i++) {
@@ -77,7 +81,9 @@ public class Calculadora {
         return factorial;
     }
 
-    // Suma dels quadrats dels primers n números
+    /**
+    * Suma dels quadrats dels primers n números
+    */
     public static int sumaQuadrats(int n) {
         int suma = 0;
         for (int i = 1; i <= n; i++) {
@@ -86,7 +92,9 @@ public class Calculadora {
         return suma;
     }
 
-    // Calcula la potència d'un nombre (sense utilitzar * ni Math.pow())
+    /**
+    * Calcula la potència d'un nombre
+    */
     public static int calcularPotencia(int base, int exponent) {
         int potencia = 0;
         for (int i = 1; i <= exponent; i++) {
@@ -95,7 +103,9 @@ public class Calculadora {
         return potencia;
     }
 
-    // Calcula el nombre de dígits d'un nombre
+    /**
+    * Calcula el nombre de dígits d'un nombre
+    */
     public static int nombreDigits(int n) {
         if (n == 0) return 1;
         n = Math.abs(n); // Fer que el nombre sigui positiu
